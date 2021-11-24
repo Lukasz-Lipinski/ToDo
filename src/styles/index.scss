@@ -1,0 +1,18 @@
+@use "_topMenu";
+@use "_animations";
+@use "_classess" as *;
+@use "_variables" as *;
+
+
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.App {
+  font-size: 1.4rem;
+  width: 70vw;
+  border: 1px solid black;
+}
