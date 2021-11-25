@@ -1,0 +1,27 @@
+@use "_animations";
+@use "_classess" as *;
+@use "_variables" as *;
+
+.addElementWindow {
+  &__form{
+    @extend %displayFlex;
+    justify-content: space-around;
+    background-color: $primary-color;
+    padding: 1rem;
+    color: $white;
+
+    button {
+      font-size: 1rem;
+      border: none;
+      border-radius: 6px;
+      padding: 10px 16px;
+      background-color: $secondary-color;
+    }
+  }
+
+  &__closeBtn {
+    color: $white;
+    background-color: red;
+    border-radius: 5px;
+  }
+}

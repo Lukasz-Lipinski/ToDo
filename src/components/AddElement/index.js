@@ -1,28 +1,49 @@
 import React, { useContext } from "react";
-import { AddButton, AppContext } from "..";
+import { connect } from "react-redux";
+import { AppContext } from "..";
 
-import { useInput } from '../Functions';
+import { returnTodayDate, useInput } from '../Functions';
+import { hideAddElementWindow, addElement } from '../MainView/redux';
 
-export default () => {
-  const context = useContext(AppContext);
+const mapStateToProps = (state) => ({
+  addedElement: state.list.list
+});
 
-  const [eventName, handleChangeEventName] = useInput();
+const mapDispatchToProps = (dispatch) => ({
+  setAddElementWindowOnFalse: () => dispatch(hideAddElementWindow()),
+  addElementToList: ({ element, date }) => dispatch(addElement({ element, date }))
+});
 
-  const { classess } = context;
-  const { addElementWindow } = classess;
+export default connect
+  (mapStateToProps,
+    mapDispatchToProps)
+  (({ setAddElementWindowOnFalse, addElementToList, addedElement }) => {
+    const context = useContext(AppContext);
 
-  const onSubmit = (e) => {
-    e.preventDefault();
-  }
+    const [eventName, handleChangeEventName] = useInput();
 
-  return (
-    <form onSubmit={onSubmit} className={addElementWindow}>
-      <label htmlFor="#eventName">Name</label>
-      <input id="eventName" type="text" value={eventName} onChange={handleChangeEventName} />
-      <label htmlFor="#date">Date</label>
-      <input type="date" />
+    const { classess } = context;
+    const { addElementWindow } = classess;
 
-      <AddButton />
-    </form>
-  )
-}
+    const onSubmit = (e) => {
+      e.preventDefault();
+    };
+
+    const sendData = () => {
+      addElementToList({ element: eventName, date: returnTodayDate });
+    }
+
+    return (
+      <div className={addElementWindow}>
+        <span onClick={setAddElementWindowOnFalse} className={`${addElementWindow}__closeBtn`}>&times;</span>
+        <form onSubmit={onSubmit} className={`${addElementWindow}__form`}>
+          <label htmlFor="#eventName">Name</label>
+          <input id="eventName" type="text" value={eventName} onChange={handleChangeEventName} />
+          <label htmlFor="#date">Date</label>
+          <input type="date" />
+
+          <button onClick={sendData}>Add</button>
+        </form>
+      </div>
+    )
+  })

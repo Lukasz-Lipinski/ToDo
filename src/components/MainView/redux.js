@@ -16,7 +16,8 @@ export default function listReducer(state = INIT_STATE, action) {
     case ADD_ELEMENT_TO_LIST:
       return {
         ...state,
-        list: [{ element: action.payload.element, date: action.payload.date }]
+        list: [{ element: action.payload.element, date: action.payload.date }],
+        showAddElementWindow: false
       };
     case SHOW_ADD_ELEMENT_WINDOW:
       return {

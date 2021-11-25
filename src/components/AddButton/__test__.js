@@ -1,11 +1,10 @@
 import { AddButton } from './';
-import { render } from 'react-testing-library';
+import { render } from '@testing-library/react';
 
 test("should have label's name as 'Add button' ", () => {
   render(<AddButton />);
-
 });
 
-test("should change state", () => {
+test("'AddButton' should change state", () => {
 
 });
