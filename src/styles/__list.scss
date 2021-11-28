@@ -1,0 +1,24 @@
+@use "_animations" as *;
+@use "_classess" as *;
+@use "_variables" as *;
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  &__listElement {
+    padding: 10px 6px;
+    border: 1px solid grey;
+    border-radius: 5px;
+    margin-top: 10px;
+    box-shadow: 0px 2px 8px 0px grey;
+    transform: none;
+    transition: transform 0.2s;
+  }
+
+  &__listElement:hover {
+    transform: translateY(-5px);
+    transition: transform 0.2s;
+  }
+}

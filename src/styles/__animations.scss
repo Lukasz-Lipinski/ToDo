@@ -1,0 +1,4 @@
+@mixin elementHover($color, $time) {
+  background-color: $color;
+  transition: background-color $time;
+}

@@ -1,27 +1,74 @@
-@use "_animations";
+@use "_animations" as *;
 @use "_classess" as *;
 @use "_variables" as *;
 
 .addElementWindow {
+  background-color: $primary-color;
+  padding: 20px;
+  color: $white;
+
+  div:first-child{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+  }
+
+  div:last-child{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
   &__form{
     @extend %displayFlex;
+    flex-direction: column;
     justify-content: space-around;
-    background-color: $primary-color;
-    padding: 1rem;
+    padding: 20px;
     color: $white;
 
-    button {
-      font-size: 1rem;
-      border: none;
-      border-radius: 6px;
-      padding: 10px 16px;
-      background-color: $secondary-color;
+    fieldset {
+      display: flex;
+    }
+
+    input {
+      width: 100%;
     }
   }
 
+  button {
+    font-size: 1rem;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 16px;
+    background-color: $accept-color;
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+
+  button:hover {
+    @include elementHover($accept-light, 0.3s);
+  }
+
+  button:active {
+    @include elementHover($accept-dark, 0s);
+  }
+
   &__closeBtn {
+    text-align: center;
+    vertical-align: middle;
+    padding: 4px 10px;
     color: $white;
-    background-color: red;
-    border-radius: 5px;
+    background-color: $danger;
+    border-radius: 8px;
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+
+  &__closeBtn:hover {
+    @include elementHover($danger-light, 0.3s);
+  }
+
+  &__closeBtn:active {
+    @include elementHover($danger-dark, 0.1s);
   }
 }

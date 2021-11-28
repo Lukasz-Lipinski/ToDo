@@ -1,6 +1,8 @@
 import { connect } from "react-redux";
+import { useContext } from 'react';
 
 import { ListElement } from '../';
+import AppContext from "../AppContext";
 
 const mapStateToProps = (state) => ({
   taskList: state.list.list
@@ -11,10 +13,14 @@ export default connect
   (mapStateToProps,
     mapDispatchToProps)
   (({ taskList }) => {
+    const context = useContext(AppContext);
+
+    const { classess } = context;
+    const { list } = classess;
     return (
-      <ul>
+      <ul className={list}>
         {
-          taskList.map((task, index) => <ListElement key={`list--element--${index}`} description={task.element} />)
+          taskList.map((task, index) => <ListElement key={`list--element--${index}`} description={task.element} date={task.date} />)
         }
       </ul>
     )

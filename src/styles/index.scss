@@ -1,10 +1,9 @@
 @use "_topMenu";
 @use "_addElement";
 @use "_list";
-@use "_animations";
+@use "_animations" as *;
 @use "_classess" as *;
 @use "_variables" as *;
-
 
 body {
   margin: 0;
@@ -17,5 +16,4 @@ body {
   margin-top: 30px;
   font-size: 1.4rem;
   width: 70vw;
-  border: 1px solid black;
 }
