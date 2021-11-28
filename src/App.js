@@ -1,8 +1,7 @@
 import { useCallback } from 'react';
-
 import { connect } from 'react-redux';
 
-import { AddElement, AppContext, MainView } from './components';
+import { AddElement, AppContext, MainView, SideBar } from './components';
 import { context } from './components/AppContext';
 
 import "./styles/index.scss";
@@ -20,6 +19,7 @@ function App({ setAddElementWindow }) {
   return (
     <div className="App">
       <AppContext.Provider value={context}>
+        <SideBar />
         {
           setComponent(setAddElementWindow)
         }

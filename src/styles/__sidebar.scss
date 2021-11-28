@@ -1,0 +1,42 @@
+@use "_animations" as *;
+@use "_classess" as *;
+@use "_variables" as *;
+
+.sidebar {
+  position: fixed;
+  display: flex;
+  top: 30%;
+  left: 0%;
+
+  div {
+    width: 10vw;
+    height: 50vh;
+    background-color: transparent;
+
+    ul {
+      display: none;
+      margin: 0;
+      padding: 20px 30px;
+      list-style-type: none;
+      border-radius: 10px;
+      border: 1px solid black;
+       
+      li {
+        padding-block: 6px;
+
+        button {
+          padding: 10px 14px;
+        }
+      }
+    }
+  }
+  
+}
+
+.sidebar:hover {
+  ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}

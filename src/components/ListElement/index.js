@@ -2,7 +2,7 @@ import { useContext } from 'react';
 
 import { AppContext } from '..';
 
-export default ({ description, date }) => {
+export default ({ description, date, category }) => {
 
   const context = useContext(AppContext);
 
@@ -10,6 +10,6 @@ export default ({ description, date }) => {
   const { list, listElement } = classess;
 
   return (
-    <li className={`${list}__${listElement}`}>{description} {date}</li>
+    <li className={`${list}__${listElement}`}><span>{description}</span> <span>{date}</span> <span>{category}</span><button>&times;</button></li>
   )
 };

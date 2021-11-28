@@ -9,14 +9,14 @@ export const hideAddElementWindow = () => ({ type: HIDE_ADD_ELEMENT_WINDOW });
 const INIT_STATE = {
   list: [],
   showAddElementWindow: false
-}
-// dodać możliwość tworzenia lity elementów
+};
+
 export default function listReducer(state = INIT_STATE, action) {
   switch (action.type) {
     case ADD_ELEMENT_TO_LIST:
       return {
         ...state,
-        list: [ ...state.list , { element: action.payload.element, date: action.payload.date }],
+        list: [...state.list, { element: action.payload.element, date: action.payload.date, category: action.payload.category }],
         showAddElementWindow: false
       };
     case SHOW_ADD_ELEMENT_WINDOW:
@@ -31,5 +31,5 @@ export default function listReducer(state = INIT_STATE, action) {
       }
     default:
       return state;
-  }
-}
+  };
+};

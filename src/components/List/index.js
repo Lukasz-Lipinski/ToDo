@@ -20,7 +20,7 @@ export default connect
     return (
       <ul className={list}>
         {
-          taskList.map((task, index) => <ListElement key={`list--element--${index}`} description={task.element} date={task.date} />)
+          taskList.map((task, index) => <ListElement key={`list--element--${index}`} description={task.element} date={task.date} category={task.category} />)
         }
       </ul>
     )

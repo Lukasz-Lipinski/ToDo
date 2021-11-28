@@ -30,6 +30,18 @@
       display: flex;
     }
 
+    @media only screen and (max-width: 750px) {
+      fieldset {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        label {
+          padding: 10px;
+        }
+      }
+    }
+
     input {
       width: 100%;
     }
@@ -54,8 +66,9 @@
   }
 
   &__closeBtn {
-    text-align: center;
-    vertical-align: middle;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 4px 10px;
     color: $white;
     background-color: $danger;

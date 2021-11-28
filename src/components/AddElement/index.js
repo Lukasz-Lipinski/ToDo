@@ -11,23 +11,24 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   setAddElementWindowOnFalse: () => dispatch(hideAddElementWindow()),
-  addElementToList: ({ element, date }) => dispatch(addElement({ element, date }))
+  addElementToList: ({ element, date, category }) => dispatch(addElement({ element, date, category }))
 });
 
 export default connect
   (mapStateToProps,
     mapDispatchToProps)
-  (({ setAddElementWindowOnFalse, addElementToList, addedElement }) => {
+  (({ setAddElementWindowOnFalse, addElementToList }) => {
     const context = useContext(AppContext);
 
     const [eventName, handleChangeEventName] = useInput();
     const [choseDate, handleSelectChoseDate] = useInput();
+    const [category, handleSelectCategory] = useInput();
 
-    const { classess } = context;
+    const { classess, categoryList } = context;
     const { addElementWindow } = classess;
 
     const sendData = () => {
-      addElementToList({ element: eventName, date: choseDate });
+      addElementToList({ element: eventName, date: choseDate, category });
     };
 
     return (
@@ -41,19 +42,16 @@ export default connect
           <label htmlFor="date">Date</label>
           <input type="date" value={choseDate} onChange={handleSelectChoseDate} required />
 
-          <fieldset>
+          <fieldset onChange={handleSelectCategory}>
             <legend>Category</legend>
-            <label htmlFor="urgent">Urgent</label>
-            <input type="radio" id="urgent" name="category" value="Urgent" />
 
-            <label htmlFor="today">Today</label>
-            <input type="radio" id="today" name="category" value="Today" />
+            {categoryList.map((category, index) => (
+              <React.Fragment key={`radio--element--${index}`}>
+                <label htmlFor={category}>{category}</label>
+                <input type="radio" id={category} name="category" value={category} />
+              </React.Fragment>
+            ))}
 
-            <label htmlFor="home">Home</label>
-            <input type="radio" id="home" name="category" value="Home" />
-
-            <label htmlFor="shopping">Shopping</label>
-            <input type="radio" id="shopping" name="category" value="Shopping" />
           </fieldset>
         </div>
 

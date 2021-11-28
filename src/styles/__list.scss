@@ -8,6 +8,8 @@
   padding: 0;
 
   &__listElement {
+    display: flex;
+    justify-content: space-around;
     padding: 10px 6px;
     border: 1px solid grey;
     border-radius: 5px;
@@ -15,6 +17,11 @@
     box-shadow: 0px 2px 8px 0px grey;
     transform: none;
     transition: transform 0.2s;
+
+    span:last-child {
+      font-style: italic;
+      color: gray;
+    }
   }
 
   &__listElement:hover {
