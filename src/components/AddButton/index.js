@@ -11,6 +11,6 @@ export default connect
     mapDispatchToProps)
   (({ setAddElementWindowOnTrue }) => {
     return (
-      <button onClick={setAddElementWindowOnTrue}>Add Element</button>
+      <button role="button" onClick={setAddElementWindowOnTrue}>Add Element</button>
     )
   });

@@ -59,7 +59,7 @@ export default connect
           </fieldset>
         </div>
 
-        <div><button onClick={sendData}>Add</button></div>
+        <div><button role="button" onClick={sendData}>Add</button></div>
       </div>
     )
   })

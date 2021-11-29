@@ -1,11 +1,8 @@
-import { useMemo } from 'react';
+import { returnTodayDate } from '../Functions';
 
 export default () => {
 
-  const todayDate = useMemo(() => {
-    const date = new Date();
-    return `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`;
-  }, []);
+  const todayDate = returnTodayDate();
 
   return (
     <span>Today: {todayDate}</span>
