@@ -10,6 +10,13 @@ export default ({ description, date, category }) => {
   const { list, listElement } = classess;
 
   return (
-    <li className={`${list}__${listElement}`}><span>{description}</span> <span>{date}</span> <span>{category}</span><button>&times;</button></li>
+    <li className={`${list}__${listElement}`}>
+      <div>
+        <span>{description}</span> <span>{date}</span> <span>{category}</span>
+      </div>
+      <div>
+        <button>&times;</button>
+      </div>
+    </li>
   )
 };

@@ -39,18 +39,22 @@ export default connect
 
           <label htmlFor="eventName">Name</label>
           <input id="eventName" type="text" value={eventName} onChange={handleChangeEventName} required />
+
           <label htmlFor="date">Date</label>
-          <input type="date" value={choseDate} onChange={handleSelectChoseDate} required />
+          <input id="date" type="date" value={choseDate} onChange={handleSelectChoseDate} required />
 
           <fieldset onChange={handleSelectCategory}>
             <legend>Category</legend>
 
-            {categoryList.map((category, index) => (
-              <React.Fragment key={`radio--element--${index}`}>
-                <label htmlFor={category}>{category}</label>
-                <input type="radio" id={category} name="category" value={category} />
-              </React.Fragment>
-            ))}
+            <div>
+              {categoryList.map((category, index) => (
+                <React.Fragment key={`radio--element--${index}`}>
+                  <label htmlFor={category}>{category}</label>
+                  <input type="radio" id={category} name="category" value={category} />
+                </React.Fragment>
+              ))}
+
+            </div>
 
           </fieldset>
         </div>

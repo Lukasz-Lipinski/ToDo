@@ -1,19 +1,25 @@
-@use "_classess";
+@use "_classess" as *;
 @use "_variables" as *;
+@use "_animations" as*;
 
 .topMenu {
   @extend %displayFlex;
+  @include linear-gardinet(10%, 0.75, 90%, 100%);
   justify-content: space-around;
-  background-color: $primary-color;
   padding: 1rem;
-  color: $white;
+  box-shadow: 2px 3px 15px 4px hsla(0, 0%, 20%, 0.5);
 
   button {
+    @include elementHover($accept-color, 0.3s);
     font-size: 1rem;
     border: none;
     border-radius: 6px;
     padding: 10px 16px;
-    background-color: $accept-color;
     cursor: pointer;
   }
+
+  button:hover {
+    @include elementHover($accept-light, 0.3s);
+  }
+
 }

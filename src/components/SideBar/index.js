@@ -14,7 +14,7 @@ export default () => {
         <ul>
           {sidebarLinks.map((link, index) => (
             <li key={`sidebar--links--${index}`}>
-              <button className={`${sidebar}__${sidebarElement}`}>{link.name}</button>
+              <a className={`${sidebar}__${sidebarElement}`}>{link.name}</a>
             </li>
           ))}
         </ul>
