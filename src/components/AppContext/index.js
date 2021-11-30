@@ -17,7 +17,8 @@ export const context = {
     "Job",
     "Tasks",
     "Today",
-    "Urgent"
+    "Urgent",
+    "Done"
   ],
   sidebarLinks: [
     { name: "All" },
@@ -26,6 +27,7 @@ export const context = {
     { name: "Today" },
     { name: "Job" },
     { name: "Tasks" },
+    { name: "Done" },
   ]
 };
 

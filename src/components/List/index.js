@@ -25,17 +25,17 @@ export default connect
 
         switch (filterCondition) {
           case "All":
-            return unfilteredList.map((task, index) => (<ListElement key={`list--element--${index}`} description={task.element} date={task.date} category={task.category} />));;
+            return unfilteredList.map((task, index) => (<ListElement key={`list--element--${index}`} description={task.element} date={task.date} category={task.category} id={task.id} />));;
           case "Urgent":
-            return unfilteredList.filter((element) => element.category === "Urgent").map((task, index) => (<ListElement key={`list--element--${index}`} description={task.element} date={task.date} category={task.category} />));
+            return unfilteredList.filter((element) => element.category === "Urgent").map((task, index) => (<ListElement key={`list--element--${index}`} description={task.element} date={task.date} category={task.category} id={task.id} />));
           case "Home":
-            return unfilteredList.filter((element) => element.category === "Home").map((task, index) => (<ListElement key={`list--element--${index}`} description={task.element} date={task.date} category={task.category} />));
+            return unfilteredList.filter((element) => element.category === "Home").map((task, index) => (<ListElement key={`list--element--${index}`} description={task.element} date={task.date} category={task.category} id={task.id} />));
           case "Today":
-            return unfilteredList.filter((element) => element.category === "Today").map((task, index) => (<ListElement key={`list--element--${index}`} description={task.element} date={task.date} category={task.category} />));
+            return unfilteredList.filter((element) => element.category === "Today").map((task, index) => (<ListElement key={`list--element--${index}`} description={task.element} date={task.date} category={task.category} id={task.id} />));
           case "Job":
-            return unfilteredList.filter((element) => element.category === "Job").map((task, index) => (<ListElement key={`list--element--${index}`} description={task.element} date={task.date} category={task.category} />));
+            return unfilteredList.filter((element) => element.category === "Job").map((task, index) => (<ListElement key={`list--element--${index}`} description={task.element} date={task.date} category={task.category} id={task.id} />));
           case "Tasks":
-            return unfilteredList.filter((element) => element.category === "Tasks").map((task, index) => (<ListElement key={`list--element--${index}`} description={task.element} date={task.date} category={task.category} />));
+            return unfilteredList.filter((element) => element.category === "Tasks").map((task, index) => (<ListElement key={`list--element--${index}`} description={task.element} date={task.date} category={task.category} id={task.id} />));
           default:
             return unfilteredList
         }

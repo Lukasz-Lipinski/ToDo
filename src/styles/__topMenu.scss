@@ -4,10 +4,10 @@
 
 .topMenu {
   @extend %displayFlex;
-  @include linear-gardinet(10%, 0.75, 90%, 100%);
+  @extend %boxShadow;
+  @include linear-gardinet(82%, 0.7, 89%, 95%);
   justify-content: space-around;
   padding: 1rem;
-  box-shadow: 2px 3px 15px 4px hsla(0, 0%, 20%, 0.5);
 
   button {
     @include elementHover($accept-color, 0.3s);
@@ -16,6 +16,7 @@
     border-radius: 6px;
     padding: 10px 16px;
     cursor: pointer;
+    outline: 3px solid $accept-dark;
   }
 
   button:hover {

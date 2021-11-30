@@ -10,17 +10,17 @@
   left: 0%;
 
   div {
-    width: 10vw;
-    height: 50vh;
+    width: 200px;
+    height: 500px;
 
     ul {
-      @include linear-gardinet(60%, 0.75, 70%, 80%);
+      @include linear-gardinet(60%, 0.6, 70%, 80%);
+      @extend %boxShadow;
       display: none;
       margin: 0;
       padding: 20px 30px;
       list-style-type: none;
       border-radius: 10px;
-      box-shadow: 2px 3px 15px 4px hsla(0, 0%, 20%, 0.5);
 
       li {
         padding-block: 6px;

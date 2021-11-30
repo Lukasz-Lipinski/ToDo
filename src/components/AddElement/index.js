@@ -33,7 +33,7 @@ export default connect
 
     return (
       <div className={addElementWindow}>
-        <div><span onClick={setAddElementWindowOnFalse} className={`${addElementWindow}__closeBtn`}>&times;</span></div>
+        <div><button onClick={setAddElementWindowOnFalse} className={`${addElementWindow}__closeBtn`}>&times;</button></div>
 
         <div className={`${addElementWindow}__form`}>
 

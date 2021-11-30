@@ -15,8 +15,7 @@ test("'AddElement' should show 2 inputs", () => {
 test("should have 1 button with label 'Add' ", () => {
   render(<Provider store={store}><AddElement /></Provider>);
 
-  const button = screen.getByRole('button');
-
+  const button = screen.getByText("Add");
   expect(button.innerHTML).toBe("Add");
 });
 
