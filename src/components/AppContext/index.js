@@ -20,6 +20,7 @@ export const context = {
     "Urgent"
   ],
   sidebarLinks: [
+    { name: "All" },
     { name: "Urgent" },
     { name: "Home" },
     { name: "Today" },

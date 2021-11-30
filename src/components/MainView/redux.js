@@ -1,14 +1,17 @@
 const ADD_ELEMENT_TO_LIST = "mainView/addElement";
 const SHOW_ADD_ELEMENT_WINDOW = "app/showAddElementWindow";
 const HIDE_ADD_ELEMENT_WINDOW = "app/hideAddElementWindow";
+const SET_CONDITION_TO_FILTER_LIST = "mainView/takeConditionToFilter";
 
 export const addElement = (payload) => ({ type: ADD_ELEMENT_TO_LIST, payload });
 export const showAddElementWindow = () => ({ type: SHOW_ADD_ELEMENT_WINDOW });
 export const hideAddElementWindow = () => ({ type: HIDE_ADD_ELEMENT_WINDOW });
+export const takeConditionToFilter = (payload) => ({ type: SET_CONDITION_TO_FILTER_LIST, payload })
 
 const INIT_STATE = {
   list: [],
-  showAddElementWindow: false
+  showAddElementWindow: false,
+  filterCondition: null
 };
 
 export default function listReducer(state = INIT_STATE, action) {
@@ -28,6 +31,11 @@ export default function listReducer(state = INIT_STATE, action) {
       return {
         ...state,
         showAddElementWindow: false
+      }
+    case SET_CONDITION_TO_FILTER_LIST:
+      return {
+        ...state,
+        filterCondition: action.payload
       }
     default:
       return state;
