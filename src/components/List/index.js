@@ -36,6 +36,8 @@ export default connect
             return unfilteredList.filter((element) => element.category === "Job").map((task, index) => (<ListElement key={`list--element--${index}`} description={task.element} date={task.date} category={task.category} id={task.id} />));
           case "Tasks":
             return unfilteredList.filter((element) => element.category === "Tasks").map((task, index) => (<ListElement key={`list--element--${index}`} description={task.element} date={task.date} category={task.category} id={task.id} />));
+          case "Done":
+            return unfilteredList.filter((element) => element.done).map((task, index) => (<ListElement key={`list--element--${index}`} description={task.element} date={task.date} category={task.category} id={task.id} />));
           default:
             return unfilteredList
         }

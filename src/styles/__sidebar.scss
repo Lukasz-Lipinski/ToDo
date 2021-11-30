@@ -6,12 +6,17 @@
   position: fixed;
   z-index: 1;
   display: flex;
-  top: 30%;
+  top: 25%;
   left: 0%;
 
   div {
     width: 200px;
     height: 500px;
+
+    @media only screen and (max-width: 500px) {
+      width: 130px;
+      font-size: 1rem;
+    }
 
     ul {
       @include linear-gardinet(60%, 0.6, 70%, 80%);
@@ -29,6 +34,10 @@
           display: block;
           padding: 10px 14px;
           cursor: pointer;
+
+          @media only screen and (max-width: 500px) {
+            padding: 4px 8px;
+          }
         }
 
         a:hover {

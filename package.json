@@ -1,6 +1,6 @@
 {
   "name": "todo",
-  "gh-pages": "https://lukasz-lipinski.github.io/ToDo/",
+  "homepage": "https://lukasz-lipinski.github.io/ToDo/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
