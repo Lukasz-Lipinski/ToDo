@@ -5,6 +5,7 @@ export const context = {
     app: "app",
     list: "list",
     listElement: "listElement",
+    doneListElement: "doneListElement",
     addButton: "addButton",
     container: "container",
     topMenu: "topMenu",

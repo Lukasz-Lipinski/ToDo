@@ -3,17 +3,19 @@ import { useContext, useCallback } from 'react';
 
 import { ListElement } from '../';
 import AppContext from "../AppContext";
+import DoneElement from "../DoneElement";
 
 const mapStateToProps = (state) => ({
   taskList: state.list.list,
-  filterCondition: state.list.filterCondition
+  filterCondition: state.list.filterCondition,
+  doneList: state.list.doneList
 });
 const mapDispatchToProps = (dispatch) => ({});
 
 export default connect
   (mapStateToProps,
     mapDispatchToProps)
-  (({ taskList, filterCondition }) => {
+  (({ taskList, filterCondition, doneList }) => {
     const context = useContext(AppContext);
 
     const { classess } = context;
@@ -25,7 +27,7 @@ export default connect
 
         switch (filterCondition) {
           case "All":
-            return unfilteredList.map((task, index) => (<ListElement key={`list--element--${index}`} description={task.element} date={task.date} category={task.category} id={task.id} />));;
+            return unfilteredList.filter(undone => undone.done !== true).map((task, index) => (<ListElement key={`list--element--${index}`} description={task.element} date={task.date} category={task.category} id={task.id} />));;
           case "Urgent":
             return unfilteredList.filter((element) => element.category === "Urgent").map((task, index) => (<ListElement key={`list--element--${index}`} description={task.element} date={task.date} category={task.category} id={task.id} />));
           case "Home":
@@ -37,13 +39,15 @@ export default connect
           case "Tasks":
             return unfilteredList.filter((element) => element.category === "Tasks").map((task, index) => (<ListElement key={`list--element--${index}`} description={task.element} date={task.date} category={task.category} id={task.id} />));
           case "Done":
-            return unfilteredList.filter((element) => element.done).map((task, index) => (<ListElement key={`list--element--${index}`} description={task.element} date={task.date} category={task.category} id={task.id} />));
+            return doneList.map((task, index) => (<DoneElement key={`doneList--element--${index}`} description={task.element} date={task.date} category={task.category} id={task.id} />));
           default:
             return unfilteredList
         }
       },
       [taskList, filterCondition],
     )
+
+    console.log(doneList);
 
     return (
       <ul className={list}>
