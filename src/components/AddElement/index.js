@@ -47,12 +47,23 @@ export default connect
             <legend>Category</legend>
 
             <div>
-              {categoryList.map((category, index) => (
-                <React.Fragment key={`radio--element--${index}`}>
-                  <label htmlFor={category}>{category}</label>
-                  <input type="radio" id={category} name="category" value={category} />
-                </React.Fragment>
-              ))}
+              {categoryList.map((category, index) => {
+                if (index === 0) {
+                  return (
+                    <React.Fragment key={`radio--element--${index}`}>
+                      <label htmlFor={category}>{category}</label>
+                      <input type="radio" id={category} name="category" value={category} checked />
+                    </React.Fragment>
+                  )
+                } else {
+                  return (
+                    <React.Fragment key={`radio--element--${index}`}>
+                      <label htmlFor={category}>{category}</label>
+                      <input type="radio" id={category} name="category" value={category} />
+                    </React.Fragment>
+                  )
+                }
+              })}
 
             </div>
 

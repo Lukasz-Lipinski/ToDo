@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { AppContext } from '..';
 import { setNewList, setAsDone } from '../MainView/redux';
 
+import { GiCheckMark } from 'react-icons/gi';
+
 const mapStateToProps = (state) => ({
   elementsList: state.list.list
 });
@@ -46,7 +48,7 @@ export default connect
           <span>{description}</span> <span>{date}</span> <span>{category}</span>
         </div>
         <div>
-          <input id={id} type="checkbox" value="Done" onClick={handleSelect} />
+          <button id={id} onClick={handleSelect} ><GiCheckMark /></button>
           <button id={id} onClick={deleteElement}>&times;</button>
         </div>
       </li>

@@ -9,7 +9,11 @@
 
   &__doneListElement {
     @extend %listElement;
-    background-color: hsla(120, 100%, 55%, 0.8)
+    background-color: hsla(120, 100%, 60%, 0.9)
+  }
+
+  &__doneListElement:hover {
+    @extend %listElement--hover;
   }
 
   &__listElement {
@@ -20,8 +24,6 @@
       display: flex;
       justify-content: space-between;
       width: 80%;
-
-      
     }
 
     div:last-child {
@@ -29,16 +31,14 @@
       width: 20%;
       justify-content: flex-end;
 
+      button:first-child {
+        @extend %button;
+        background-color: $accept-color;
+      }
+
       button {
-        padding: 6px 10px;
-        font-size: 1.2rem;
-        color: $white;
-        border: none;
-        border-radius: 6px;
-        margin-right: 10px;
+        @extend %button;
         background-color: $danger;
-        text-align: center;
-        vertical-align: middle;
       }
 
       button:hover {
@@ -48,7 +48,6 @@
   }
 
   &__listElement:hover {
-    transform: translateY(-5px);
-    transition: transform 0.2s;
+    @extend %listElement--hover;
   }
 }

@@ -1,3 +1,5 @@
+@use "_variables" as *;
+
 %displayFlex {
   display: flex;
   flex-wrap: wrap;
@@ -22,4 +24,23 @@
       font-style: italic;
       color: gray;
     }
+}
+
+%listElement--hover {
+  transform: translateY(-5px);
+  transition: transform 0.2s;
+}
+
+
+%button {
+  padding: 6px 10px;
+  font-size: 1.2rem;
+  color: $white;
+  border: none;
+  border-radius: 6px;
+  margin-right: 10px;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+
 }
