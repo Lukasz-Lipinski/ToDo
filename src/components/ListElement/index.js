@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { AppContext } from '..';
 import { setNewList, setAsDone } from '../MainView/redux';
 
-import { GiCheckMark } from 'react-icons/gi';
+import { VscCheck, VscChromeClose } from 'react-icons/vsc';
 
 const mapStateToProps = (state) => ({
   elementsList: state.list.list
@@ -33,7 +33,6 @@ export default connect
     };
 
     const handleSelect = (e) => {
-      console.log(e.target);
       const targetID = parseInt(e.target.id);
 
       const doneList = elementsList.filter(doneElement => doneElement.id === targetID);
@@ -49,8 +48,8 @@ export default connect
           <span>{description}</span> <span>{date}</span> <span>{category}</span>
         </div>
         <div>
-          <button><GiCheckMark id={id} onClick={handleSelect} /></button>
-          <button id={id} onClick={deleteElement}>&times;</button>
+          <VscCheck id={id} onClick={handleSelect} />
+          <VscChromeClose id={id} onClick={deleteElement} />
         </div>
       </li>
     )

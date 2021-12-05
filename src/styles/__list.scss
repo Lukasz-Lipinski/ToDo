@@ -31,20 +31,23 @@
       width: 20%;
       justify-content: flex-end;
 
-      button:first-child {
+      svg {
         @extend %button;
+        transition: background-color 0.3s;
+      }
+      svg:first-child {
         background-color: $accept-color;
-        svg {
-          width:100%;
-        }
       }
 
-      button {
-        @extend %button;
+      svg:first-child:hover {
+        @include elementHover($accept-light, 0.3);
+      }
+
+      svg:last-child {
         background-color: $danger;
       }
 
-      button:hover {
+      svg:last-child:hover {
         @include elementHover($danger-light, 0.3);
       }
     }
