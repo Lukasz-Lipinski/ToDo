@@ -33,6 +33,7 @@ export default connect
     };
 
     const handleSelect = (e) => {
+      console.log(e.target);
       const targetID = parseInt(e.target.id);
 
       const doneList = elementsList.filter(doneElement => doneElement.id === targetID);
@@ -48,7 +49,7 @@ export default connect
           <span>{description}</span> <span>{date}</span> <span>{category}</span>
         </div>
         <div>
-          <button id={id} onClick={handleSelect} ><GiCheckMark /></button>
+          <button><GiCheckMark id={id} onClick={handleSelect} /></button>
           <button id={id} onClick={deleteElement}>&times;</button>
         </div>
       </li>

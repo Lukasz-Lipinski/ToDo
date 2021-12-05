@@ -34,6 +34,9 @@
       button:first-child {
         @extend %button;
         background-color: $accept-color;
+        svg {
+          width:100%;
+        }
       }
 
       button {

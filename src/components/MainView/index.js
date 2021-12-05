@@ -4,19 +4,20 @@ import { connect } from 'react-redux';
 import { AppContext, TopMenu, List } from '..';
 
 const mapStateToProps = (state) => ({
-  amountOfListElements: state.list.list.length
+  amountOfListElements__Undone: state.list.list.length,
+  amountOfListElements__Done: state.list.doneList.length,
 });
 const mapDispatchToProps = () => ({});
 
 export default connect
   (mapStateToProps,
     mapDispatchToProps)
-  (({ amountOfListElements }) => {
+  (({ amountOfListElements__Undone, amountOfListElements__Done}) => {
     const context = useContext(AppContext);
     const { classess } = context;
 
     const showList = () => {
-      if (amountOfListElements) return <List />
+      if (amountOfListElements__Undone || amountOfListElements__Done) return <List />
       return null;
     };
 

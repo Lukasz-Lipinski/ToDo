@@ -52,7 +52,7 @@ export default function listReducer(state = INIT_STATE, action) {
     case SET_AS_DONE:
       return {
         ...state,
-        doneList: action.payload
+        doneList: [...state.doneList, ...action.payload]
       }
     default:
       return state;
