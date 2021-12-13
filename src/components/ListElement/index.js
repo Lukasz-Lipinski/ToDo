@@ -28,7 +28,6 @@ export default connect
       const id = parseInt(e.target.id);
 
       const newList = elementsList.filter(element => element.id !== id);
-
       setNewList(newList);
     };
 
@@ -40,7 +39,7 @@ export default connect
 
       const newListWithoutDoneElements = elementsList.filter(undoneElements => undoneElements.id !== targetID);
       setNewList(newListWithoutDoneElements);
-    }
+    };
 
     return (
       <li className={`${list}__${listElement}`}>

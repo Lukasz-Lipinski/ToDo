@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { connect } from "react-redux";
 import { AppContext } from "..";
 
-import { useInput } from '../Functions';
+import { useInput, returnTodayDate } from '../Functions';
 import { hideAddElementWindow, addElement } from '../MainView/redux';
 
 const mapStateToProps = (state) => ({
@@ -19,13 +19,14 @@ export default connect
     mapDispatchToProps)
   (({ setAddElementWindowOnFalse, addElementToList }) => {
     const context = useContext(AppContext);
+    const { classess, categoryList } = context;
+    const { addElementWindow } = classess;
 
     const [eventName, handleChangeEventName] = useInput();
     const [choseDate, handleSelectChoseDate] = useInput();
-    const [category, handleSelectCategory] = useInput();
+    const [category, handleSelectCategory] = useInput(categoryList[0]);
 
-    const { classess, categoryList } = context;
-    const { addElementWindow } = classess;
+
 
     const sendData = () => {
       addElementToList({ element: eventName, date: choseDate, category });
@@ -35,13 +36,13 @@ export default connect
       <div className={addElementWindow}>
         <div><button onClick={setAddElementWindowOnFalse} className={`${addElementWindow}__closeBtn`}>&times;</button></div>
 
-        <div className={`${addElementWindow}__form`}>
+        <form className={`${addElementWindow}__form`}>
 
           <label htmlFor="eventName">Name</label>
           <input id="eventName" type="text" value={eventName} onChange={handleChangeEventName} required />
 
           <label htmlFor="date">Date</label>
-          <input id="date" type="date" value={choseDate} onChange={handleSelectChoseDate} required />
+          <input id="date" type="date" value={choseDate} onChange={handleSelectChoseDate} required checked />
 
           <fieldset onChange={handleSelectCategory}>
             <legend>Category</legend>
@@ -59,7 +60,7 @@ export default connect
                   return (
                     <React.Fragment key={`radio--element--${index}`}>
                       <label htmlFor={category}>{category}</label>
-                      <input type="radio" id={category} name="category" value={category} />
+                      <input type="radio" id={category} name="category" value={category} readOnly />
                     </React.Fragment>
                   )
                 }
@@ -68,7 +69,7 @@ export default connect
             </div>
 
           </fieldset>
-        </div>
+        </form>
 
         <div><button role="button" onClick={sendData}>Add</button></div>
       </div>

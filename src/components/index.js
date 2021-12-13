@@ -7,5 +7,6 @@ export { default as doneElement } from './DoneElement';
 export { default as TopMenu } from './TopMenu';
 export { default as CurrentDate } from './CurrentDate';
 export { default as SideBar } from './SideBar';
+export { default as Snackbar } from './Snackbar';
 
 export { default as AppContext } from './AppContext';

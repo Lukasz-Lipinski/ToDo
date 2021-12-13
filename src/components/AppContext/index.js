@@ -11,7 +11,13 @@ export const context = {
     topMenu: "topMenu",
     addElementWindow: "addElementWindow",
     sidebar: "sidebar",
-    sidebarElement: "sidebarElement"
+    sidebarElement: "sidebarElement",
+    snackbarInfo: "snackbar--info",
+    snackbarDone: "snackbar--done"
+  },
+  snackbar: {
+    info: "Position was added",
+    done: "Done!",
   },
   categoryList: [
     "Home",

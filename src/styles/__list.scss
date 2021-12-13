@@ -35,6 +35,7 @@
         @extend %button;
         transition: background-color 0.3s;
       }
+
       svg:first-child {
         background-color: $accept-color;
       }

@@ -12,5 +12,5 @@ export const useInput = (init_val = "") => {
 
 export const returnTodayDate = () => {
   const date = new Date();
-  return `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`;
+  return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
 }

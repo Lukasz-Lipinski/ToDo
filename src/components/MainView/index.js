@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { connect } from 'react-redux';
 
-import { AppContext, TopMenu, List } from '..';
+import { AppContext, TopMenu, List, Snackbar } from '..';
 
 const mapStateToProps = (state) => ({
   amountOfListElements__Undone: state.list.list.length,
@@ -12,7 +12,7 @@ const mapDispatchToProps = () => ({});
 export default connect
   (mapStateToProps,
     mapDispatchToProps)
-  (({ amountOfListElements__Undone, amountOfListElements__Done}) => {
+  (({ amountOfListElements__Undone, amountOfListElements__Done }) => {
     const context = useContext(AppContext);
     const { classess } = context;
 
@@ -24,6 +24,7 @@ export default connect
     return (
       <div className={classess.container}>
         <TopMenu />
+        <Snackbar />
         {showList()}
       </div>
     )
