@@ -16,14 +16,23 @@
     @extend %listElement--hover;
   }
 
-  &__listElement {
+  &--listElement {
     @extend %listElement;
     background-color: hsla(0, 0%, 100%, 0.8);
 
-    div {
+    &__details {
       display: flex;
       justify-content: space-between;
       width: 80%;
+      
+      span.comparedDates--Less {
+        color: $danger;
+        font-weight: bold;
+      }
+
+      span.comparedDates--Equal {
+        background-color: $alert;
+      }
     }
 
     div:last-child {

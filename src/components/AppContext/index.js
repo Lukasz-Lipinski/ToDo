@@ -13,7 +13,7 @@ export const context = {
     sidebar: "sidebar",
     sidebarElement: "sidebarElement",
     snackbarInfo: "snackbar--info",
-    snackbarDone: "snackbar--done"
+    snackbarDone: "snackbar--done",
   },
   snackbar: {
     info: "Position was added",
@@ -25,7 +25,6 @@ export const context = {
     "Tasks",
     "Today",
     "Urgent",
-    "Done"
   ],
   sidebarLinks: [
     { name: "All" },
@@ -38,5 +37,5 @@ export const context = {
   ]
 };
 
-const AppContext = createContext(context);
-export default AppContext;
+export default createContext(context);
+
