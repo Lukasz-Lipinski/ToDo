@@ -6,8 +6,12 @@
   @extend %displayFlex;
   @extend %boxShadow;
   @include linear-gardinet(82%, 0.7, 89%, 95%);
-  justify-content: space-around;
-  padding: 1rem;
+  justify-content: space-between;
+  padding: 16px 30px;
+
+  @media only screen and(max-width: 484px) {
+    justify-content: center;
+  }
 
   button {
     @extend %button;
@@ -19,4 +23,40 @@
     @include elementHover($accept-light, 0.3s);
   }
 
+  
+
+  .container {
+    @extend %container;
+    flex-wrap: wrap;
+    justify-content: start;
+    width: 50%;
+
+    @media only screen and(max-width: 635px) {
+      justify-content: center;
+    }
+
+    input[type=date] {
+      border-radius: 6px;
+      padding: 4px 8px;
+      border:none;
+      transition: transform 0.2s;
+    }
+  
+    input[type=date]:hover {
+      transform: scale(1.1);
+      transition: transform 0.2s;
+    }
+
+    input[type=checkbox] {
+      height: 20px;
+      width: 20px;
+      margin-left: 14px;
+      }
+
+      @media only screen and(max-width: 635px) {
+        input[type=checkbox] {
+          margin-block: 20px;
+        }
+    }
+  }
 }

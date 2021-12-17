@@ -1,0 +1,13 @@
+@use "_animations" as *;
+@use "_classess" as *;
+@use "_variables" as *;
+
+.snackbar--info {
+  @extend %snackbar;
+  background: linear-gradient(0deg, rgba(63,173,255, 0.7) 65%, rgba(255,255,255, 0.8) 80%, rgba(63,173,255, 0.7) 95%);
+}
+
+.snackbar--done {
+  @extend %snackbar;
+  background: linear-gradient(0deg, rgba(43, 255, 0, 0.7) 65%, rgba(255,255,255, 0.8) 80%, rgba(43, 255, 0, 0.7) 95%);
+}

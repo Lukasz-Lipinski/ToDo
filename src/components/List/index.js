@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { useContext, useCallback, useEffect } from 'react';
+import { useContext, useCallback, useEffect, useMemo } from 'react';
 
 import { ListElement } from '../';
 import AppContext from "../AppContext";
@@ -9,48 +9,90 @@ const mapStateToProps = (state) => ({
   taskList: state.list.list,
   filterCondition: state.list.filterCondition,
   doneList: state.list.doneList,
+  filterConditionDate: state.list.filterConditionDate,
+  isFilterDate: state.list.isFilterDate
 });
 const mapDispatchToProps = (dispatch) => ({});
 
 export default connect
   (mapStateToProps,
     mapDispatchToProps)
-  (({ taskList, filterCondition, doneList }) => {
+  ((props) => {
+
+    const {
+      taskList,
+      filterCondition,
+      doneList,
+      filterConditionDate,
+      isFilterDate
+    } = props;
+
     const context = useContext(AppContext);
 
     const { classess } = context;
     const { list } = classess;
 
-    const FilterList = (elementsTickedAsUndone, elementsTickedAsDone, filterCondition) => {
-      const unfilteredList = elementsTickedAsUndone;
-      const doneList = elementsTickedAsDone;
+    const FilterList = ({ taskList, doneList, filterCondition, filterConditionDate , isFilterDate}) => {
+      
+      const listElement = (task, index) => <ListElement key={`list--element--${index}`} description={task.element} date={task.date} category={task.category} id={task.id} />
+      const doneListElement = (task, index) => <DoneElement key={`doneList--element--${index}`} description={task.element} date={task.date} category={task.category} id={task.id} />
 
+      const newListAllElements = taskList.filter(undone => undone.done !== true);
+      const newListForCheckingCategory = (category) => taskList.filter(element => element.category === category).map((task, index) => listElement(task, index));
+      const newListForCheckingCategoryAndDate = (category) => taskList.filter(element => element.category === category).filter(element => element.date === filterConditionDate).map((task, index) => listElement(task, index));
       switch (filterCondition) {
         case "All":
-          return unfilteredList.filter(undone => undone.done !== true).map((task, index) => (<ListElement key={`list--element--${index}`} description={task.element} date={task.date} category={task.category} id={task.id} />));;
+          if(isFilterDate) {
+            return newListAllElements.filter(undone => undone.date === filterConditionDate ).map((task, index) => listElement(task, index));
+          } 
+          return newListAllElements.map((task, index) => listElement(task, index)); 
         case "Urgent":
-          return unfilteredList.filter((element) => element.category === "Urgent").map((task, index) => (<ListElement key={`list--element--${index}`} description={task.element} date={task.date} category={task.category} id={task.id} />));
+          if(isFilterDate) {
+            return newListForCheckingCategoryAndDate("Urgent");
+          }
+          return newListForCheckingCategory("Urgent");
         case "Home":
-          return unfilteredList.filter((element) => element.category === "Home").map((task, index) => (<ListElement key={`list--element--${index}`} description={task.element} date={task.date} category={task.category} id={task.id} />));
+          if(isFilterDate) {
+            return newListForCheckingCategoryAndDate("Home");
+          }
+          return newListForCheckingCategory("Home");
         case "Today":
-          return unfilteredList.filter((element) => element.category === "Today").map((task, index) => (<ListElement key={`list--element--${index}`} description={task.element} date={task.date} category={task.category} id={task.id} />));
+          if(isFilterDate) {
+            return newListForCheckingCategoryAndDate("Today");
+          }
+          return newListForCheckingCategory("Today");
         case "Job":
-          return unfilteredList.filter((element) => element.category === "Job").map((task, index) => (<ListElement key={`list--element--${index}`} description={task.element} date={task.date} category={task.category} id={task.id} />));
+          if(isFilterDate) {
+            return newListForCheckingCategoryAndDate("Job");
+          }
+          return newListForCheckingCategory("Job");
         case "Tasks":
-          return unfilteredList.filter((element) => element.category === "Tasks").map((task, index) => (<ListElement key={`list--element--${index}`} description={task.element} date={task.date} category={task.category} id={task.id} />));
+          if(isFilterDate) {
+            return newListForCheckingCategoryAndDate("Tasks");
+          }
+          return newListForCheckingCategory("Tasks");
         case "Done":
-          return doneList.map((task, index) => (<DoneElement key={`doneList--element--${index}`} description={task.element} date={task.date} category={task.category} id={task.id} />));
+          if(isFilterDate) {
+            return doneList.filter(element => element.date === filterConditionDate).map((task, index) => doneListElement(task, index));
+          }
+          return doneList.map((task, index) => doneListElement(task, index));
         default:
-          return unfilteredList
-      }
+          return taskList;
+      };
     };
 
-    console.log(doneList);
+    const filterConditions = useMemo(() => ({
+      taskList,
+      doneList,
+      filterCondition,
+      filterConditionDate,
+      isFilterDate
+    }), [taskList, filterCondition, doneList, filterConditionDate, isFilterDate]);
 
     return (
       <ul className={list}>
         {
-          FilterList(taskList, doneList, filterCondition)
+          FilterList(filterConditions)
         }
       </ul>
     )

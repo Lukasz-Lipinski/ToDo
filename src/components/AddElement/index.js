@@ -4,6 +4,7 @@ import { AppContext } from "..";
 
 import { useInput, returnTodayDate } from '../Functions';
 import { hideAddElementWindow, addElement } from '../MainView/redux';
+import { isAddedTrue } from '../Snackbar/redux';
 
 const mapStateToProps = (state) => ({
   addedElement: state.list.list
@@ -11,25 +12,34 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   setAddElementWindowOnFalse: () => dispatch(hideAddElementWindow()),
-  addElementToList: ({ element, date, category }) => dispatch(addElement({ element, date, category }))
+  addElementToList: ({ element, date, category }) => dispatch(addElement({ element, date, category })),
+  isAddedSetOnTrue: () => dispatch(isAddedTrue())
 });
 
 export default connect
   (mapStateToProps,
     mapDispatchToProps)
-  (({ setAddElementWindowOnFalse, addElementToList }) => {
+  ((props) => {
     const context = useContext(AppContext);
     const { classess, categoryList } = context;
     const { addElementWindow } = classess;
 
+
+    const todayDate = returnTodayDate();
+
     const [eventName, handleChangeEventName] = useInput();
-    const [choseDate, handleSelectChoseDate] = useInput();
+    const [choseDate, handleSelectChoseDate] = useInput(todayDate);
     const [category, handleSelectCategory] = useInput(categoryList[0]);
 
-
+    const {
+      setAddElementWindowOnFalse,
+      addElementToList,
+      isAddedSetOnTrue,
+    } = props;
 
     const sendData = () => {
       addElementToList({ element: eventName, date: choseDate, category });
+      isAddedSetOnTrue();
     };
 
     return (
@@ -53,14 +63,14 @@ export default connect
                   return (
                     <React.Fragment key={`radio--element--${index}`}>
                       <label htmlFor={category}>{category}</label>
-                      <input type="radio" id={category} name="category" value={category} checked />
+                      <input type="radio" id={category} name="category" value={category} defaultChecked />
                     </React.Fragment>
                   )
                 } else {
                   return (
                     <React.Fragment key={`radio--element--${index}`}>
                       <label htmlFor={category}>{category}</label>
-                      <input type="radio" id={category} name="category" value={category} readOnly />
+                      <input type="radio" id={category} name="category" value={category} />
                     </React.Fragment>
                   )
                 }
@@ -71,7 +81,7 @@ export default connect
           </fieldset>
         </form>
 
-        <div><button role="button" onClick={sendData}>Add</button></div>
+        <div><button className={`${addElementWindow}__form__addBtn`} onClick={sendData}>Add</button></div>
       </div>
     )
   })

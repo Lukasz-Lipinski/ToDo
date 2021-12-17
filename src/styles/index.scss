@@ -2,6 +2,7 @@
 @use "_addElement";
 @use "_list";
 @use "_sidebar";
+@use "_snackbar";
 @use "_animations" as *;
 @use "_classess" as *;
 @use "_variables" as *;
@@ -18,5 +19,12 @@ body {
   margin-top: 30px;
   font-size: 1.4rem;
   width: 70vw;
-  
+
+  .container {
+    &--snackbarContainer {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+  }
 }

@@ -13,7 +13,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 export default connect
   (mapStateToProps, mapDispatchToProps)
-  (({ setCondition, checking }) => {
+  (({ setCondition }) => {
 
     const context = useContext(AppContext);
     const { sidebarLinks, classess } = context;

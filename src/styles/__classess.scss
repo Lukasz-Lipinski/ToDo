@@ -43,3 +43,24 @@
   vertical-align: middle;
   cursor: pointer;
 }
+
+%snackbar {
+  position: fixed;
+  top: 90%;
+  display: flex;
+  justify-content: center;
+  max-width: 10vw;
+  margin: 10px 0;
+  padding: 15px 24px;
+  color: $white;
+  @extend %boxShadow;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: bolder;
+};
+
+%container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

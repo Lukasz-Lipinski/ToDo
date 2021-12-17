@@ -19,10 +19,10 @@ function App({ setAddElementWindow }) {
   return (
     <div className="App">
       <AppContext.Provider value={context}>
-        <SideBar />
-        {
-          setComponent(setAddElementWindow)
-        }
+          <SideBar />
+          {
+            setComponent(setAddElementWindow)
+          }
       </AppContext.Provider>
     </div >
 
